@@ -16,6 +16,31 @@ setTaskList([
 
 ])
 }
+
+
+const switchTask = (id,type) => {
+  setTaskList(taskList.map((item)=>{
+    if(item.id==id){
+    if(item.type=="good"){
+        item.type="bad"
+    }
+    else{
+        item.type="good"
+    }
+    }
+    return item;
+}))
+ }
+
+
+ function deleteTask (id) {
+    setTaskList(taskList.filter((item)=>item.id !== id))
+   }
+
+
+
+
+      
 const getRandomUniqueID = () => {
     let stringGenerator =
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -28,6 +53,7 @@ const getRandomUniqueID = () => {
     return randomString
 }
 
+
   return (
 <>
     <div className='wrapper'>
@@ -35,7 +61,7 @@ const getRandomUniqueID = () => {
             <h1>Not to DO LISt</h1>
             </div>
       <TaskInputComoponent addList={addList}/>
-      <TableCpmponent taskList={taskList}/>
+      <TableCpmponent taskList={taskList} switchTask ={switchTask} deleteTask={deleteTask}/>
     </div>
 </>
   )
